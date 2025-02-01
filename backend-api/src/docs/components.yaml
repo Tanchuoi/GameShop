@@ -1,0 +1,114 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+    Game:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: number
+        image:
+          type: string
+        description:
+          type: string
+        release_day:
+          type: string
+          format: date
+        platform:
+          type: string
+        publisher:
+          type: string
+        developer:
+          type: string
+        stock:
+          type: integer
+        genres:
+          type: array
+          items:
+            type: integer
+        images:
+          type: array
+          items:
+            type: string
+    Genre:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    Cart:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+  responses:
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    NotFoundError:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    field:
+                      type: string
+                    message:
+                      type: string
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    BadRequestError:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
